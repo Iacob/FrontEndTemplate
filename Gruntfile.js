@@ -40,6 +40,10 @@ module.exports = function(grunt) {
           ext: '.js'
 	}]
       }
+    },
+    watch: {
+      files: ['src/*.sass', 'src/*.jsx'],
+      tasks: ['default']
     }
   });
   
@@ -49,8 +53,9 @@ module.exports = function(grunt) {
   //grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-babel');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   
   // Default task(s).
-  grunt.registerTask('default', ['sass']);
+  grunt.registerTask('default', ['sass', 'babel']);
   
 };
