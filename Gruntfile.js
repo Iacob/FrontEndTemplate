@@ -49,7 +49,7 @@ module.exports = function(grunt) {
       },
     },
     watch: {
-      files: ['src/*.sass', 'src/*.jsx'],
+      files: ['src/*.sass', 'src/*.jsx', 'resources/**'],
       tasks: ['default']
     }
   });
