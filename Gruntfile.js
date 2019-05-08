@@ -21,7 +21,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'src',
           src: ['*.sass'],
-          dest: 'static/css',
+          dest: 'build/css',
           ext: '.css'
 	}]
       }
@@ -29,17 +29,24 @@ module.exports = function(grunt) {
     babel: {
       options: {
 	sourceMap: false,
-	presets: ['@babel/preset-env']
+	//presets: ['@babel/preset-env']
       },
       dist: {
 	files: [{
 	  expand: true,
           cwd: 'src',
           src: ['*.jsx'],
-          dest: 'static/js',
+          dest: 'build/js',
           ext: '.js'
 	}]
       }
+    },
+    copy: {
+      main: {
+	files: [
+	  {expand: true, cwd: 'resources/', src: ['**'], dest: 'build/'},
+	],
+      },
     },
     watch: {
       files: ['src/*.sass', 'src/*.jsx'],
@@ -53,9 +60,10 @@ module.exports = function(grunt) {
   //grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-babel');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
   
   // Default task(s).
-  grunt.registerTask('default', ['sass', 'babel']);
+  grunt.registerTask('default', ['sass', 'babel', 'copy']);
   
 };
